@@ -1,0 +1,46 @@
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div *ngIf="!isLoading">
+      <button mat-button color="primary" (click)="onNewNote()">
+        Add New Note
+      </button>
+      <mat-divider></mat-divider>
+      <div *ngFor="let note of notes">
+        <mat-card style="cursor: cell">
+          <mat-card-title (click)="onPick(note.id, note.title, note.content)">{{
+            note.title
+          }}</mat-card-title>
+          <mat-card-subtitle
+            >Date created: {{ note.created }}</mat-card-subtitle
+          >
+          <mat-card-actions>
+            <button
+              mat-button
+              color="warn"
+              type="button"
+              (click)="onDelete(note.id)"
+            >
+              Delete
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile> <app-note></app-note> </mat-grid-tile>
+</mat-grid-list>
+<!-- <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading">
+  <button mat-button color="primary" (click)="onNewNote()">Add New Note</button>
+  <mat-divider></mat-divider>
+  <div *ngFor="let note of notes">
+    <mat-card [routerLink]="['/new']" style="cursor: cell">
+      <mat-card-title>{{ note.title }}</mat-card-title>
+      <mat-card-subtitle>Date created: {{ note.created }}</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-button color="warn" type="button">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div> -->

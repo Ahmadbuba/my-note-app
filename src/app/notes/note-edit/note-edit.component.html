@@ -1,0 +1,39 @@
+<form #editNoteForm="ngForm" (ngSubmit)="onSubmit(editNoteForm)">
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      type="text"
+      id="title"
+      [(ngModel)]="title"
+      name="title"
+      required=""
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Content</mat-label>
+    <textarea
+      matInput
+      id="content"
+      [(ngModel)]="content"
+      name="content"
+      required=""
+    >
+    </textarea>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="accent"
+    type="submit"
+    style="margin-right: 20px"
+    [disabled]="!editNoteForm.valid"
+  >
+    <mat-icon>add</mat-icon>
+    <span>Add Note</span> Note
+  </button>
+  <button mat-raised-button color="accent" (click)="onCancel()">
+    <mat-icon>cancel</mat-icon>
+    <span>Cancel</span>
+  </button>
+</form>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
